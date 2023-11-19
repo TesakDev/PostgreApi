@@ -31,17 +31,27 @@ public partial class Context : DbContext
         {
             entity.HasKey(e => e.Id).HasName("types_pk");
 
-            entity.Property(e => e.Id).UseIdentityAlwaysColumn();
-            entity.Property(e => e.Name).HasColumnType("character varying");
+            entity.Property(e => e.Id)
+                .UseIdentityAlwaysColumn()
+                .HasColumnName("id");
+            entity.Property(e => e.Name)
+                .HasColumnType("character varying")
+                .HasColumnName("name");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("users_pk");
 
-            entity.Property(e => e.Id).UseIdentityAlwaysColumn();
-            entity.Property(e => e.Login).HasColumnType("character varying");
-            entity.Property(e => e.Name).HasMaxLength(255);
+            entity.Property(e => e.Id)
+                .UseIdentityAlwaysColumn()
+                .HasColumnName("id");
+            entity.Property(e => e.Login)
+                .HasColumnType("character varying")
+                .HasColumnName("login");
+            entity.Property(e => e.Name)
+                .HasColumnType("character varying")
+                .HasColumnName("name");
             entity.Property(e => e.Password).HasColumnType("character varying");
         });
 
